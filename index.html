@@ -12,6 +12,7 @@
       --primary-dark: #b71c1c;
       --light: #ffffff;
       --gray: rgba(255, 255, 255, 0.9);
+      --accent-green: #4caf50;
     }
 
     * {
@@ -34,7 +35,7 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);
       pointer-events: none;
       z-index: 1;
@@ -52,13 +53,13 @@
       text-align: center;
       padding: 60px 20px;
       animation: fadeIn 1.5s ease-out;
+      z-index: 2;
     }
 
     .logo {
       max-width: 280px;
       margin-bottom: 40px;
       animation: float 4s ease-in-out infinite;
-      /* Removed shadow as requested */
     }
 
     .tagline {
@@ -87,13 +88,13 @@
     /* EMAIL SUBSCRIBE */
     .subscribe {
       position: relative;
-      z-index: 2;
       display: flex;
       flex-direction: column;
       gap: 16px;
       align-items: center;
       max-width: 420px;
       width: 100%;
+      z-index: 2;
     }
 
     .subscribe label {
@@ -146,7 +147,6 @@
       color: var(--light);
     }
 
-    /* Loading state - button shrinks and shows centered spinner */
     .subscribe button.loading {
       width: 56px;
       padding: 12px;
@@ -190,25 +190,16 @@
       transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
 
-    .popup.show {
-      transform: translate(-50%, -50%) scale(1);
-    }
+    .popup.show { transform: translate(-50%, -50%) scale(1); }
 
-    .popup h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .popup p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
+    .popup h3 { font-size: 28px; margin-bottom: 12px; }
+    .popup p { font-size: 18px; opacity: 0.9; }
 
     .popup .checkmark {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: #4caf50;
+      background: var(--accent-green);
       margin: 0 auto 20px;
       position: relative;
       animation: pulse 1.5s ease-in-out;
@@ -241,50 +232,79 @@
       z-index: 999;
     }
 
-    .overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
+    .overlay.show { opacity: 1; visibility: visible; }
 
-    /* FOOTER */
+    /* FOOTER MODERN */
     footer {
       background: rgba(0,0,0,0.15);
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
       line-height: 1.6;
       backdrop-filter: blur(5px);
+      position: relative;
     }
 
-    footer a {
+    .footer-main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .footer-links a, .footer-links span {
       color: var(--light);
-      margin: 0 15px;
+      font-size: 16px;
       text-decoration: none;
-      font-size: 15px;
       opacity: 0.9;
-      transition: opacity 0.3s;
     }
 
-    footer a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
+    .footer-links span { opacity: 0.6; }
 
-    .powered, .copyright {
-      margin-top: 12px;
+    .footer-links a:hover { text-decoration: underline; opacity: 1; }
+
+    .copyright {
       font-size: 14px;
       opacity: 0.85;
+      margin-bottom: 16px;
     }
+
+    .powered-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .powered-badge a {
+      color: var(--light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.2);
+      transition: background 0.3s ease;
+    }
+
+    .powered-badge a:hover { background: rgba(255,255,255,0.3); }
+
+    .powered-badge:hover { transform: translateY(-2px); }
 
     /* ANIMATIONS */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);} }
 
     @media (max-width: 768px) {
       .headline { font-size: 42px; }
@@ -299,29 +319,16 @@
       .headline { font-size: 36px; }
       .popup h3 { font-size: 24px; }
       .popup p { font-size: 16px; }
-      .subscribe button {
-        position: static;
-        width: 100%;
-        margin-top: 10px;
-        padding: 16px;
-      }
-      .subscribe button.loading {
-        width: 60px;
-        padding: 16px;
-        margin: 10px auto 0;
-      }
+      .subscribe button { position: static; width: 100%; margin-top: 10px; padding: 16px; }
+      .subscribe button.loading { width: 60px; padding: 16px; margin: 10px auto 0; }
     }
   </style>
 </head>
 <body>
   <section class="hero">
-    <!-- LOGO -->
     <img src="assets/logo/bloodBond_Logo.jpg" alt="BloodBond Logo" class="logo" />
-
     <div class="tagline">A bond that saves lives</div>
-
     <div class="headline">Launching Soon</div>
-
     <p class="subtext">
       Our vision is to build a global blood donation network where one bond,
       one decision, and one act of kindness can save a life.
@@ -338,7 +345,6 @@
     </form>
   </section>
 
-  <!-- Success Popup -->
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="popup">
     <div class="checkmark"></div>
@@ -346,52 +352,59 @@
     <p>We will notify you as soon as BloodBond launches.<br>You're now part of a life-saving bond ❤️</p>
   </div>
 
+  <!-- MODERN FOOTER -->
   <footer>
-    <div>
-      <a href="https://khalidlikhon.github.io/bloodBond_app/legal/about.html" target="_blank">About Us</a> |
-      <a href="https://khalidlikhon.github.io/bloodBond_app/legal/terms_conditions.html" target="_blank">Terms & Conditions</a> |
-      <a href="https://khalidlikhon.github.io/bloodBond_app/legal/privacy_policy.html" target="_blank">Privacy Policy</a>
+    <div class="footer-main">
+      <div class="footer-links">
+        <a href="https://khalidlikhon.github.io/bloodBond_app/legal/about.html" target="_blank">About Us</a>
+        <span>|</span>
+        <a href="https://khalidlikhon.github.io/bloodBond_app/legal/terms_conditions.html" target="_blank">Terms & Conditions</a>
+        <span>|</span>
+        <a href="https://khalidlikhon.github.io/bloodBond_app/legal/privacy_policy.html" target="_blank">Privacy Policy</a>
+      </div>
+      <div class="copyright">© 2025 BloodBond Dev™ - All Rights Reserved.</div>
     </div>
-    <div class="powered">
-      Powered by <a href="https://www.facebook.com/teamOrbiq" target="_blank">TeamOrbiq</a>
-    </div>
-    <div class="copyright">
-      ©2025 BloodBond™. All Rights Preserved.
+    <div class="powered-badge">
+      <span>Powered by</span>
+      <a href="https://www.facebook.com/teamOrbiq.official" target="_blank">Team Orbiq.</a>
     </div>
   </footer>
 
   <script>
     function handleSubmit(e) {
       e.preventDefault();
-
+      const form = e.target;
       const btn = document.getElementById('notifyBtn');
       const overlay = document.getElementById('overlay');
       const popup = document.getElementById('popup');
 
-      // Add loading state (button shrinks + spinner)
       btn.classList.add('loading');
       btn.disabled = true;
 
-      // Simulate submission delay (replace with real Formspree response if needed)
-      setTimeout(() => {
-        // Show animated success popup
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
         overlay.classList.add('show');
         popup.classList.add('show');
 
-        // Hide popup after 4 seconds
         setTimeout(() => {
           overlay.classList.remove('show');
           popup.classList.remove('show');
-
-          // Reset button
           btn.classList.remove('loading');
           btn.disabled = false;
           btn.textContent = 'Notify Me at Launch';
+          form.reset();
         }, 4000);
-      }, 2000);
-
-      // Actually submit the form (Formspree will handle it)
-      e.target.submit();
+      })
+      .catch(() => {
+        alert('Oops! Something went wrong. Please try again.');
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      });
     }
   </script>
 </body>
