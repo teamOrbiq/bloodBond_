@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BloodBond - Terms & Conditions</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height:1.7;
+    scroll-behavior: smooth;
+}
+.container {
+    max-width:900px;
+    margin:50px auto;
+    padding:30px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+h1,h2,h3,h4 {
+    margin-bottom:15px;
+    color:#d32f2f;
+    font-weight:700;
+}
+h1 {
+    font-size:2.5em;
+    text-align:center;
+    margin-bottom:40px;
+    animation: fadeInDown 1s ease forwards;
+}
+h2 {
+    font-size:1.6em;
+    border-bottom:2px solid #d32f2f;
+    padding-bottom:8px;
+    margin-top:30px;
+    animation: fadeInLeft 1s ease forwards;
+}
+p { 
+    margin-bottom:15px; 
+    opacity:0; 
+    transform:translateY(20px); 
+    animation: fadeInUp 1s forwards; 
+}
+p:nth-child(2) { animation-delay:0.2s; }
+ul { padding-left:25px; margin-bottom:20px; }
+ul li {
+    margin-bottom:12px;
+    position:relative;
+    opacity:0;
+    transform:translateX(-20px);
+    animation: fadeInRight 0.8s forwards;
+}
+ul li:nth-child(1){animation-delay:0.2s;}
+ul li:nth-child(2){animation-delay:0.4s;}
+ul li:nth-child(3){animation-delay:0.6s;}
+ul li li::before {
+    content:"•";
+    color:#d32f2f;
+    position:absolute;
+    left:-20px;
+    font-weight:bold;
+}
+a { color:#e63946; text-decoration:none; font-weight:bold; }
+a:hover { text-decoration:underline; }
+footer {
+    text-align:center;
+    padding:20px 0;
+    border-top:1px solid #eee;
+    color:#777;
+    font-size:0.9em;
+    margin-top:40px;
+}
+
+/* Animations */
+@keyframes fadeInUp {0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);}}
+@keyframes fadeInDown {0% {opacity:0; transform:translateY(-30px);} 100% {opacity:1; transform:translateY(0);}}
+@keyframes fadeInLeft {0% {opacity:0; transform:translateX(-30px);} 100% {opacity:1; transform:translateX(0);}}
+@keyframes fadeInRight {0% {opacity:0; transform:translateX(30px);} 100% {opacity:1; transform:translateX(0);}}
+
+@media(max-width:600px){
+    .container{ margin:20px; padding:20px; }
+    h1{ font-size:2em; }
+    h2{ font-size:1.4em; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Terms & Conditions</h1>
+    <p>By using the BloodBond application, you agree to these Terms & Conditions. If you do not agree with any part of these terms, please refrain from using the app.</p>
+
+    <h2>Purpose of the Application</h2>
+    <p>BloodBond is designed as a platform to facilitate blood donation and connect donors with requesters in a safe and efficient manner. The app does not provide medical treatment, professional healthcare services, or guarantee the availability of blood. All medical decisions remain the responsibility of users and certified healthcare providers.</p>
+
+    <h2>User Eligibility</h2>
+    <p>Users must provide accurate and truthful personal information when registering. Verification of phone numbers is required to maintain authenticity. Blood donation eligibility is the responsibility of the individual, and the app does not assess or approve medical suitability.</p>
+
+    <h2>User Responsibilities</h2>
+    <p>Users are expected to use the app ethically and respectfully. This includes providing truthful information, interacting respectfully with others, and refraining from harassment, fraud, or spamming. Misuse of the platform may lead to account restrictions or permanent suspension.</p>
+
+    <h2>Blood Donation & Medical Disclaimer</h2>
+    <p>BloodBond does not assume any responsibility for medical outcomes or health complications arising from blood donation or transfusion. Users must consult qualified healthcare professionals for guidance. The platform serves solely as a connection tool and does not provide medical advice or guarantee results.</p>
+
+    <h2>Communication Rules</h2>
+    <p>In-app communication features, including chat and calls, are only enabled after mutual consent between donors and requesters. Any misuse of communication tools, including harassment or inappropriate behavior, can result in account restrictions or bans.</p>
+
+    <h2>Rating & Feedback</h2>
+    <p>Feedback and ratings provided within the app are intended to reflect user experience and interactions, not medical efficacy. Fake, abusive, or misleading ratings may be removed. BloodBond reserves the right to review ratings for fairness and safety.</p>
+
+    <h2>Account Suspension & Termination</h2>
+    <ul>
+        <li>Providing false or misleading information</li>
+        <li>Violating community guidelines or ethical standards</li>
+        <li>Abusing or harassing other users</li>
+    </ul>
+    <p>Accounts that breach these rules may be suspended temporarily or permanently at the discretion of BloodBond.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>BloodBond is not liable for failed donations, user disputes, medical emergencies, financial loss, or any personal harm resulting from the use of the app. All interactions and actions are at the user's own risk.</p>
+
+    <h2>Changes to Terms</h2>
+    <p>BloodBond may update these Terms & Conditions from time to time. Continued use of the app signifies acceptance of any modifications or updates.</p>
+
+   
+    <footer>
+      &copy; 2025 <a href="https://www.facebook.com/teamOrbiq" target="_blank" style="color: #57595B; font-weight: 600; text-decoration: none;">Team Orbiq</a>. All Rights Reserved.
+    </footer>
+</div>
+
+</body>
+</html>
