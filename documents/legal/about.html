@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About BloodBond</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height:1.7;
+    scroll-behavior: smooth;
+}
+.container {
+    max-width:1000px;
+    margin:50px auto;
+    padding:30px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+h1,h2,h3,h4 {
+    margin-bottom:15px;
+    color:#d32f2f;
+    font-weight:700;
+}
+h1 {
+    font-size:2.5em;
+    text-align:center;
+    margin-bottom:40px;
+    animation: fadeInDown 1s ease forwards;
+}
+h2 {
+    font-size:1.8em;
+    border-bottom:2px solid #d32f2f;
+    padding-bottom:8px;
+    margin-top:40px;
+    animation: fadeInLeft 1s ease forwards;
+}
+h3 { font-size:1.4em; margin-top:25px; }
+p { margin-bottom:15px; opacity:0; transform:translateY(20px); animation: fadeInUp 1s forwards; }
+p:nth-child(2) { animation-delay:0.2s; }
+p:nth-child(3) { animation-delay:0.4s; }
+ul { padding-left:25px; margin-bottom:20px; }
+ul li {
+    margin-bottom:12px;
+    position:relative;
+    opacity:0;
+    transform:translateX(-20px);
+    animation: fadeInRight 0.8s forwards;
+}
+ul li:nth-child(1){animation-delay:0.2s;}
+ul li:nth-child(2){animation-delay:0.4s;}
+ul li:nth-child(3){animation-delay:0.6s;}
+ul li:nth-child(4){animation-delay:0.8s;}
+ul li:nth-child(5){animation-delay:1s;}
+ul li::before {
+    content:"•";
+    color:#d32f2f;
+    position:absolute;
+    left:-20px;
+    font-weight:bold;
+}
+
+/* Team Section - Larger Cards on Desktop */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.team-member {
+    position: relative;
+    width: 450px;             /* Large on desktop */
+    height: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: #fff;
+}
+
+.team-member:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.team-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s ease;
+}
+
+.team-member .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6), transparent);
+    color: #fff;
+    padding: 40px 30px 30px;
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+}
+
+.team-member:hover .overlay,
+.team-member.active .overlay {
+    transform: translateY(0);
+}
+
+.team-member:hover img,
+.team-member.active img {
+    filter: brightness(0.6);
+}
+
+.team-member .name {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.team-member .role {
+    font-size: 0.95em;
+    opacity: 0.95;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.team-member .description {
+    font-size: 0.75em;
+    line-height: 1.6;
+}
+
+/* Mobile View - Half overlay visible by default */
+@media (max-width: 768px) {
+    .team-grid {
+        gap: 30px;
+    }
+    .team-member {
+        width: 92%;
+        height: 520px;          /* Slightly taller for better proportion */
+        border-radius: 18px;
+    }
+
+    /* Default state: overlay covers ~50% of the card (half the image) */
+    .team-member .overlay {
+        transform: translateY(50%);   /* Shows exactly half the overlay */
+        padding: 40px 30px 40px;
+    }
+
+    /* When clicked: full overlay slides up */
+    .team-member.active .overlay {
+        transform: translateY(0);
+    }
+
+    /* Larger, readable text when overlay is visible */
+    .team-member .name {
+        font-size: 1.2em;
+    }
+    .team-member .role {
+        font-size: 0.95em;
+        margin-bottom: 15px;
+    }
+    .team-member .description {
+        font-size: 0.75em;
+        line-height: 1.6;
+    }
+
+    /* Optional: slight darken even in default state for better text readability */
+    .team-member img {
+        filter: brightness(0.75);
+    }
+    .team-member.active img {
+        filter: brightness(0.6);
+    }
+}
+
+/* Mobile View - Full width, optimized */
+@media (max-width: 768px) {
+    .team-grid {
+        gap: 30px;
+    }
+    .team-member {
+        width: 92%;
+        height: 500px;        /* Even taller on mobile for easy reading */
+        border-radius: 18px;
+    }
+    .team-member .overlay {
+        transform: translateY(calc(100% - 110px)); /* Shows name + role initially */
+        padding: 40px 30px 30px;
+    }
+    .team-member.active .overlay {
+        transform: translateY(0);
+    }
+    .team-member .name {
+        font-size: 1.2em;
+    }
+    .team-member .role {
+        font-size: 0.95em;
+        margin-bottom: 15px;
+    }
+    .team-member .description {
+        font-size: 0.75em;
+        line-height: 1.6;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);}}
+@keyframes fadeInDown {0% {opacity:0; transform:translateY(-30px);} 100% {opacity:1; transform:translateY(0);}}
+@keyframes fadeInLeft {0% {opacity:0; transform:translateX(-30px);} 100% {opacity:1; transform:translateX(0);}}
+@keyframes fadeInRight {0% {opacity:0; transform:translateX(30px);} 100% {opacity:1; transform:translateX(0);}}
+
+a { color:#e63946; text-decoration:none; font-weight:bold; }
+a:hover { text-decoration:underline; }
+footer {
+    text-align:center;
+    padding:20px 0;
+    border-top:1px solid #eee;
+    color:#777;
+    font-size:0.9em;
+    margin-top:40px;
+}
+
+@media(max-width:600px){
+    .container{ margin:20px; padding:20px; }
+    h1{ font-size:2em; }
+    h2{ font-size:1.5em; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <!-- Your existing content above remains the same -->
+    <h1>What is BloodBond?</h1>
+    <p>BloodBond is a digital blood donation platform designed to connect people in need of blood with verified donors quickly, safely, and responsibly.</p>
+    <p>Our mission is to make blood donation simple, trusted, and accessible for everyone--whether in emergency situations or planned medical needs. BloodBond enables users to search for nearby donors based on blood group and location, send blood requests, and communicate securely once a donor agrees to help.</p>
+
+    <h2>Core Principles</h2>
+    <ul>
+        <li><strong>Human Connection:</strong> Creating meaningful bonds between donors and patients that can save lives.</li>
+        <li><strong>Trust & Safety:</strong> Verified users, controlled communication, and experience-based rating systems.</li>
+        <li><strong>Simplicity:</strong> A fast, easy-to-use system designed for real-life emergencies.</li>
+    </ul>
+
+<h2>Our Team & Contributions</h2>
+<div class="team-grid">
+
+<!-- Khalid Likhon -->
+<div class="team-member" onclick="this.classList.toggle('active')">
+<img src="https://hkteqpspixaklkcjtuqj.supabase.co/storage/v1/object/public/ads'images/BloodBond%20Team/liO's_photo.jpg" alt="Khalid Likhon">
+<div class="overlay">
+<div class="name">Khalid Likhon</div>
+<div class="role">Head of Team Orbiq</div>
+<div class="description">
+He is the visionary leader behind BloodBond, guiding the platform from concept to full execution. 
+He also serves as the Head of the Research & Development team, personally leading research planning, 
+system architecture, and building the technical foundation of the platform. 
+He has been involved in every step of the process, from development to deployment, making sure everything 
+was built, tested, and delivered under his guidance. 
+His work ensures BloodBond remains reliable, scalable, and impactful for long-term social good.
+</div>
+</div>
+</div>
+
+
+
+<!-- Mahadi Hasan Sakib -->
+<div class="team-member" onclick="this.classList.toggle('active')">
+<img src="https://hkteqpspixaklkcjtuqj.supabase.co/storage/v1/object/public/ads'images/BloodBond%20Team/sakib's_photo.jpg" alt="Mahadi Hasan Sakib">
+<div class="overlay">
+<div class="name">Mahadi Hasan Sakib</div>
+<div class="role">Head of Networking</div>
+<div class="description">
+Leads BloodBond’s national networking operations, campaigns, and outreach programs across the country. 
+Oversees partnerships, community engagement, and strategic collaboration initiatives. 
+Coordinates large-scale campaigns to increase awareness and platform reach. 
+Plays a key role in building strong national connections and long-term networks. 
+Ensures sustainable growth through organized networking and public engagement efforts.
+</div>
+</div>
+</div>
+
+
+<!-- Hadi Uz Zaman -->
+<div class="team-member" onclick="this.classList.toggle('active')">
+<img src="https://hkteqpspixaklkcjtuqj.supabase.co/storage/v1/object/public/ads'images/BloodBond%20Team/hadi's_photo.jpg" alt="Hadi Uz Zaman">
+<div class="overlay">
+<div class="name">Hadi Uz Zaman</div>
+<div class="role">Networking Operations Coordinator</div>
+<div class="description">
+Plays an active role in supporting BloodBond’s national networking and outreach operations. 
+Assists in coordinating campaigns, community programs, and partnership activities. 
+Manages communication flow between networking teams and field-level volunteers. 
+Supports planning and execution of awareness initiatives and collaborative events. 
+Contributes to strengthening BloodBond’s operational network and outreach efficiency.
+</div>
+</div>
+</div>
+
+
+<!-- Muntasir Fahim -->
+<div class="team-member" onclick="this.classList.toggle('active')">
+<img src="https://hkteqpspixaklkcjtuqj.supabase.co/storage/v1/object/public/ads'images/BloodBond%20Team/fahim's_photo.jpg" alt="Muntasir Fahim">
+<div class="overlay">
+<div class="name">Muntasir Fahim</div>
+<div class="role">Social Media & Support Coordinator</div>
+<div class="description">
+Manages BloodBond’s social media presence and digital communication platforms. 
+Responsible for public engagement, content coordination, and awareness support. 
+Assists users through support channels and helps guide community interactions. 
+Plays a vital role in maintaining a positive public image and trusted communication flow. 
+Supports campaigns by coordinating online outreach and user engagement activities.
+</div>
+</div>
+</div>
+
+
+</div>
+
+    <!-- Rest of your content (How Users Benefit, Disclaimer, Vision, Footer) remains unchanged -->
+    <h2>How Users Benefit</h2>
+    <ul>
+        <li>Quickly find verified blood donors in their area based on blood group and location.</li>
+        <li>Send blood requests and receive real-time notifications when donors respond.</li>
+        <li>Communicate safely and directly with donors after acceptance.</li>
+        <li>Rate donors, check donor histories, and access guidance for safe blood donation.</li>
+        <li>Receive medical support and nearby hospital recommendations via AI-based assistance.</li>
+    </ul>
+    <h2>Disclaimer</h2>
+    <p>BloodBond does not sell blood, does not act as a medical service provider, and does not replace hospitals or professional healthcare. We serve as a technology platform that helps people connect at the right time, in the right place.</p>
+    <h2>Vision</h2>
+    <p>Our vision is to build a global blood donation network where one bond, one decision, and one act of kindness can save a life.</p>
+    <footer>
+     &copy; 2025 <a href="https://www.facebook.com/teamOrbiq" target="_blank" style="color: #57595B; font-weight: 600; text-decoration: none;">Team Orbiq</a>. All Rights Reserved.
+    </footer>
+</div>
+
+<script>
+// Close other cards when one is opened on mobile (accordion style)
+document.querySelector('.team-grid').addEventListener('click', function(e) {
+    if (window.innerWidth > 768) return;
+    const clickedMember = e.target.closest('.team-member');
+    if (!clickedMember) return;
+    document.querySelectorAll('.team-member').forEach(m => {
+        if (m !== clickedMember) m.classList.remove('active');
+    });
+});
+</script>
+</body>
+</html>
